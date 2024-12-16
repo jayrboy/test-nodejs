@@ -1,57 +1,12 @@
+version: '3.4'
+
 services:
-  api:
-    container_name: api
-    build: . # ตำแหน่งของ Dockerfile
-    ports:
-      - '8080:8080'
+  test_nodejs:
+    image: test_nodejs
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     environment:
-      - MONGODB_URL=mongodb://mongo:27017/mydb
-      - POSTGRES_URL=postgresql://postgres:P@ssword@postgresql:5432/mydb
-    depends_on:
-      - mongo
-      - postgres
-    networks:
-      - my-network
-
-  mongo:
-    container_name: mongo
-    image: mongo
-    restart: always
+      NODE_ENV: production
     ports:
-      - '27017:27017'
-    volumes:
-      - mongo_data:/data/db
-    networks:
-      - my-network
-
-  postgres:
-    container_name: postgres
-    image: postgres
-    restart: always
-    ports:
-      - '5432:5432'
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=P@ssword
-      - POSTGRES_DB=mydb
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - my-network
-
-  nginx:
-    image: nginx
-    ports:
-      - '80:80'
-    volumes:
-      - .nginx.conf:/etc/nginx/nginx.conf
-    networks:
-      - my-network
-
-volumes:
-  mongo_data:
-  postgres_data:
-
-networks:
-  my-network:
-    driver: bridge
+      - 8080:8080

@@ -1,12 +1,41 @@
 ## Backend Development (Node.js)
 
 ```zsh
-mkdir test-nodejs
-cd test-nodejs
-npm init    # or
+$ npm i nodemon -g
+$ npm i express
+$ npm i dotenv --save
+```
 
-# Package.JSON `npm version v1.0.0`
-npm init --yes
-npm install nodemon express
-npm install dotenv --save
+## Install
+
+```zsh
+$ npm i
+```
+
+## Dev mode & Run
+
+```zsh
+$ node --watch index.js
+$ nodemon index.js
+
+$ npm run dev
+$ npm start
+```
+
+## Test
+
+```zsh
+$ npm migration
+$ npm run test-migration
+
+$ npm run test
+$ FILE=./test/ut/widget/list.js npm run test
+```
+
+## Tag Version
+
+```zsh
+$ npm version 1.0.0-p1
+$ git push origin v1.0.0-p1
+$ git push
 ```

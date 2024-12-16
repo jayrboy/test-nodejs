@@ -1,4 +1,6 @@
-FROM node:22-alpine
+FROM node:16-alpine
+
+ENV NODE_ENV=production
 
 WORKDIR /app
 
@@ -10,4 +12,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
